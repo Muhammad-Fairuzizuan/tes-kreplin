@@ -197,8 +197,13 @@
 
     </main>
 
-    <footer class="w-full text-center py-6 mt-auto text-[10px] font-bold text-secondary/50 uppercase tracking-widest">
-      © 2026 Kraepelin Speed
+    <footer class="w-full text-center py-6 mt-auto flex flex-col items-center gap-1">
+      <span class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest">
+        © 2026 Kraepelin Speed
+      </span>
+      <span class="text-[9px] font-bold text-secondary/30 tracking-widest">
+        v1.0.1
+      </span>
     </footer>
   {:else if $screen === 'SETTINGS'}
     <SettingsScreen />

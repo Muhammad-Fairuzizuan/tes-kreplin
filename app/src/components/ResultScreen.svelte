@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { totalScore, playerName, resetGame } from '../stores/gameStore.ts';
-  import { settings } from '../stores/settingsStore.ts';
+  import { totalScore, playerName, resetGame } from '../stores/gameStore';
+  import { settings } from '../stores/settingsStore';
 
   $: total = $totalScore;
   $: accuracy = total.correct + total.wrong > 0

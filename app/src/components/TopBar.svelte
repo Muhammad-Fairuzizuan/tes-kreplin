@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { totalScore, timeLeft, timeProgress, resetGame } from '../stores/gameStore.ts';
+  import { totalScore, timeLeft, timeProgress, resetGame } from '../stores/gameStore';
 
   // Format mm:ss
   $: minutes = Math.floor($timeLeft / 60);

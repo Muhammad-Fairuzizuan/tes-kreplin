@@ -1,7 +1,10 @@
 <script lang="ts">
-  import { settings } from '../stores/settingsStore.ts';
+  import { settings } from '../stores/settingsStore';
 
   const timeOptions = [1, 2, 5, 11.5, 22.5, 30];
+  const operations = ['Penjumlahan', 'Pengurangan'] as const;
+  const questionTypes = ['Berurut', 'Acak'] as const;
+  const formats = ['Horizontal', 'Vertikal'] as const;
   let customTime = false;
   let customTimeValue = 5;
 
@@ -12,10 +15,7 @@
   }
 
 
-  /**
-   * @param {number | 'custom'} val
-   */
-  function handleTimeChange(val) {
+  function handleTimeChange(val: number | 'custom') {
     if (val === 'custom') {
       customTime = true;
       $settings.duration = customTimeValue;
@@ -25,11 +25,9 @@
     }
   }
 
-  /**
-   * @param {Event & { currentTarget: EventTarget & HTMLInputElement }} e
-   */
-  function handleCustomTimeInput(e) {
-    const val = parseFloat(e.currentTarget.value);
+  function handleCustomTimeInput(e: Event) {
+    const target = e.currentTarget as HTMLInputElement;
+    const val = parseFloat(target.value);
     if (!isNaN(val) && val > 0) {
       $settings.duration = val;
     }
@@ -105,11 +103,11 @@
         </div>
       </div>
       <div class="flex bg-surface-dim p-1 rounded-xl w-full" role="radiogroup" aria-label="Jenis Perhitungan">
-        {#each ['Penjumlahan', 'Pengurangan'] as op}
+        {#each operations as op}
           <button type="button" 
             role="radio" tabindex="0"
             aria-checked={$settings.operation === op}
-            on:click={() => $settings.operation = op}
+            on:click={() => $settings.operation = op as 'Penjumlahan' | 'Pengurangan'}
             class="flex-1 py-3 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer
                    {$settings.operation === op ? 'bg-surface text-primary shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : 'text-secondary hover:text-primary active:scale-95'}"
           >
@@ -131,11 +129,11 @@
         </div>
       </div>
       <div class="flex bg-surface-dim p-1 rounded-xl w-full" role="radiogroup" aria-label="Tipe Soal">
-        {#each ['Berurut', 'Acak'] as op}
+        {#each questionTypes as op}
           <button type="button" 
             role="radio" tabindex="0"
             aria-checked={$settings.questionType === op}
-            on:click={() => $settings.questionType = op}
+            on:click={() => $settings.questionType = op as 'Berurut' | 'Acak'}
             class="flex-1 py-3 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer
                    {$settings.questionType === op ? 'bg-surface text-primary shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : 'text-secondary hover:text-primary active:scale-95'}"
           >
@@ -157,11 +155,11 @@
         </div>
       </div>
       <div class="flex bg-surface-dim p-1 rounded-xl w-full" role="radiogroup" aria-label="Format Soal">
-        {#each ['Horizontal', 'Vertikal'] as op}
+        {#each formats as op}
           <button type="button" 
             role="radio" tabindex="0"
             aria-checked={$settings.format === op}
-            on:click={() => $settings.format = op}
+            on:click={() => $settings.format = op as 'Horizontal' | 'Vertikal'}
             class="flex-1 py-3 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer
                    {$settings.format === op ? 'bg-surface text-primary shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : 'text-secondary hover:text-primary active:scale-95'}"
           >

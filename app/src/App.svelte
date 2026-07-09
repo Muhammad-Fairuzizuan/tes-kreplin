@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { screen } from './stores/gameStore.ts';
+  import { screen } from './stores/gameStore';
   import StartScreen from './components/StartScreen.svelte';
   import Countdown from './components/Countdown.svelte';
   import TopBar from './components/TopBar.svelte';
   import MathBoard from './components/MathBoard.svelte';
   import CustomNumpad from './components/CustomNumpad.svelte';
   import ResultScreen from './components/ResultScreen.svelte';
-  import { settings } from './stores/settingsStore.ts';
+  import { settings } from './stores/settingsStore';
 
   $: {
     if (typeof document !== 'undefined') {

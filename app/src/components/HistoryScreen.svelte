@@ -2,14 +2,20 @@
 
   import { onMount } from 'svelte';
   
-  /** @type {any[]} */
-  let history = [];
+  interface HistoryRecord {
+    name: string;
+    date: string;
+    totalCorrect: number;
+    totalWrong: number;
+  }
+
+  let history: HistoryRecord[] = [];
   
   onMount(() => {
     try {
       history = JSON.parse(localStorage.getItem('kraepelin_history') || '[]');
       // Sort history from newest to oldest
-      history.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      history.sort((a: HistoryRecord, b: HistoryRecord) => new Date(b.date).getTime() - new Date(a.date).getTime());
     } catch (e) {
       history = [];
     }
@@ -26,7 +32,7 @@
   /**
    * @param {string} isoString
    */
-  function formatDate(isoString) {
+  function formatDate(isoString: string) {
     const date = new Date(isoString);
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -36,10 +42,7 @@
     return `${day}/${month}/${year} ${hours}:${mins}`;
   }
 
-  /**
-   * @param {{totalCorrect: number, totalWrong: number}} record
-   */
-  function getAccuracy(record) {
+  function getAccuracy(record: {totalCorrect: number, totalWrong: number}) {
     const total = record.totalCorrect + record.totalWrong;
     if (total === 0) return '0.0';
     return ((record.totalCorrect / total) * 100).toFixed(1);

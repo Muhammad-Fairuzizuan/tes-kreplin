@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { currentPair, lastFeedback } from '../stores/gameStore.ts';
-  import { settings } from '../stores/settingsStore.ts';
+  import { currentPair, lastFeedback } from '../stores/gameStore';
+  import { settings } from '../stores/settingsStore';
 </script>
 
 <div class="flex-1 flex flex-col items-center justify-center px-6 relative w-full overflow-hidden">

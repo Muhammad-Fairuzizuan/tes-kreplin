@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { countdownValue } from '../stores/gameStore.ts';
+  import { countdownValue } from '../stores/gameStore';
 </script>
 
 <div class="flex items-center justify-center h-full bg-bg relative overflow-hidden">

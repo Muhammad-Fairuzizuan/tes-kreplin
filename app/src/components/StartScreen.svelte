@@ -1,12 +1,19 @@
 <script lang="ts">
-  import { playerName, startCountdown, screen } from "../stores/gameStore.ts";
-  import { settings } from "../stores/settingsStore.ts";
+  import { playerName, startCountdown, screen } from "../stores/gameStore";
+  import { settings } from "../stores/settingsStore";
   import SettingsScreen from "./SettingsScreen.svelte";
   import HistoryScreen from "./HistoryScreen.svelte";
 
+  interface HistoryRecord {
+    duration: number;
+    operation: string;
+    questionType: string;
+    totalCorrect: number;
+    name: string;
+  }
+
   let name = "";
-  /** @type {any[]} */
-  let history = [];
+  let history: HistoryRecord[] = [];
 
   $: if ($screen === 'START') {
     try {
@@ -26,7 +33,7 @@
   }
 
   /** @param {KeyboardEvent} e */
-  function handleKeydown(e) {
+  function handleKeydown(e: KeyboardEvent) {
     if (e.key === "Enter" && name.trim()) {
       handleStart();
     }

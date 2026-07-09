@@ -38,7 +38,7 @@
 
 <div class="flex-grow flex flex-col overflow-y-auto w-full relative z-10" style="font-family: var(--font-body);">
 
-  <div class="p-4 flex flex-col gap-5 pb-[calc(6rem+env(safe-area-inset-bottom))]">
+  <div class="p-4 flex flex-col gap-5 pb-[calc(3rem+env(safe-area-inset-bottom))]">
 
 
     <!-- Waktu -->

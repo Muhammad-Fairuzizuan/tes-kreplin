@@ -8,9 +8,9 @@
     : '0.0';
 </script>
 
-<div class="flex flex-col h-full bg-bg overflow-y-auto overflow-x-hidden px-5 pt-6 pb-24 relative z-10">
+<div class="flex flex-col h-full bg-bg overflow-y-auto overflow-x-hidden px-5 pt-6 pb-[max(env(safe-area-inset-bottom),2.5rem)] relative z-10">
   <!-- Header -->
-  <div class="text-center mb-8">
+  <div class="text-center mb-8 shrink-0">
     <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent mb-4">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-on-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5 12l5 5L20 7"></path>
@@ -21,14 +21,14 @@
   </div>
 
   <!-- Hero Card: Agregat -->
-  <div class="bg-accent rounded-[2rem] p-8 text-center text-on-accent mb-4 relative overflow-hidden shadow-[0_12px_40px_rgba(var(--color-accent-rgb),0.3)]">
+  <div class="bg-accent rounded-[2rem] p-8 text-center text-on-accent mb-4 relative overflow-hidden shadow-[0_12px_40px_rgba(var(--color-accent-rgb),0.3)] shrink-0">
     <!-- Dekorasi background -->
     <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
     <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-black/10 rounded-full blur-2xl"></div>
     
     <div class="relative z-10">
       <div class="text-[11px] font-bold uppercase tracking-widest opacity-90 mb-2" style="font-family: var(--font-display);">Total Jawaban (Agregat)</div>
-      <div class="text-[6rem] leading-[0.8] font-black tracking-tighter drop-shadow-sm" style="font-family: var(--font-body);">
+      <div class="text-[6rem] leading-none font-black tracking-tighter drop-shadow-sm pb-1" style="font-family: var(--font-body);">
         {total.correct + total.wrong}
       </div>
     </div>

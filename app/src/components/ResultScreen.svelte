@@ -8,7 +8,7 @@
     : '0.0';
 </script>
 
-<div class="flex flex-col h-full bg-bg overflow-y-auto overflow-x-hidden px-5 py-6 relative z-10">
+<div class="flex flex-col h-full bg-bg overflow-y-auto overflow-x-hidden px-5 pt-6 pb-24 relative z-10">
   <!-- Header -->
   <div class="text-center mb-8">
     <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent mb-4">

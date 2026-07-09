@@ -80,7 +80,7 @@
       </div>
 
       <!-- History List -->
-      <div class="flex flex-col gap-4 pb-12">
+      <div class="flex flex-col gap-4 pb-24">
         {#each history as record (record.date)}
           <div class="bg-surface rounded-2xl p-5 border border-border/50 shadow-sm flex flex-col gap-4 relative overflow-hidden">
             <!-- Header Card -->

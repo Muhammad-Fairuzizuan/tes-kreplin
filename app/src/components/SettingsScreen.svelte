@@ -1,5 +1,5 @@
-<script>
-  import { settings } from '../stores/settingsStore.js';
+<script lang="ts">
+  import { settings } from '../stores/settingsStore.ts';
 
   const timeOptions = [1, 2, 5, 11.5, 22.5, 30];
   let customTime = false;

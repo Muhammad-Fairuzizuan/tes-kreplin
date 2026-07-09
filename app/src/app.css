@@ -1,24 +1,41 @@
 @import "tailwindcss";
 
+/* ── Local Fonts ── */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/hanken-grotesk-v12-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/jetbrains-mono-v24-latin-regular.woff2') format('woff2');
+}
+
 /* ── Design Tokens (from Cognitive Focus DESIGN.md) ── */
 @theme {
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-surface-dim: #f1f5f9;
-  --color-surface-card: #ffffff;
+  --color-bg: oklch(98.5% 0.005 250); /* #f8fafc */
+  --color-surface: oklch(100% 0 0); /* #ffffff */
+  --color-surface-dim: oklch(96% 0.008 250); /* #f1f5f9 */
+  --color-surface-card: oklch(100% 0 0); /* #ffffff */
 
-  --color-primary: #0f172a;
-  --color-primary-light: #334155;
-  --color-secondary: #64748b;
+  --color-primary: oklch(21% 0.02 250); /* #0f172a */
+  --color-primary-light: oklch(35% 0.03 250); /* #334155 */
+  --color-secondary: oklch(55% 0.03 250); /* #64748b */
   
-  --color-accent: #4f46e5; /* Vibrant Indigo */
-  --color-accent-dim: rgba(79, 70, 229, 0.12);
-  --color-on-accent: #ffffff;
+  --color-accent: oklch(50% 0.2 280); /* #4f46e5 approx */
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  --color-on-accent: oklch(100% 0 0); /* #ffffff */
 
-  --color-error: #ef4444;
-  --color-success: #10b981;
-  --color-on-primary: #ffffff;
-  --color-border: #e2e8f0;
+  --color-error: oklch(62% 0.18 25); /* #ef4444 approx */
+  --color-success: oklch(72% 0.15 160); /* #10b981 approx */
+  --color-on-primary: oklch(100% 0 0); /* #ffffff */
+  --color-border: oklch(92% 0.01 250); /* #e2e8f0 */
 
   --font-display: "JetBrains Mono", monospace;
   --font-body: "Hanken Grotesk", sans-serif;
@@ -31,46 +48,46 @@
 }
 
 /* ── Dark Mode Support ── */
-:root.dark {
-  --color-bg: #020617;
-  --color-surface: #0f172a;
-  --color-surface-dim: #1e293b;
-  --color-surface-card: #0f172a;
-
-  --color-primary: #f8fafc;
-  --color-primary-light: #cbd5e1;
-  --color-secondary: #94a3b8;
-  
-  --color-accent: #6366f1;
-  --color-accent-dim: rgba(99, 102, 241, 0.15);
-  --color-on-accent: #ffffff;
-
-  --color-error: #f87171;
-  --color-success: #34d399;
-  --color-on-primary: #020617;
-  --color-border: #334155;
-}
-
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --color-bg: #020617;
-    --color-surface: #0f172a;
-    --color-surface-dim: #1e293b;
-    --color-surface-card: #0f172a;
+    --color-bg: oklch(13% 0.02 250); /* #020617 */
+    --color-surface: oklch(21% 0.02 250); /* #0f172a */
+    --color-surface-dim: oklch(27% 0.02 250); /* #1e293b */
+    --color-surface-card: oklch(21% 0.02 250); /* #0f172a */
 
-    --color-primary: #f8fafc;
-    --color-primary-light: #cbd5e1;
-    --color-secondary: #94a3b8;
+    --color-primary: oklch(98.5% 0.005 250); /* #f8fafc */
+    --color-primary-light: oklch(86% 0.01 250); /* #cbd5e1 */
+    --color-secondary: oklch(68% 0.02 250); /* #94a3b8 */
     
-    --color-accent: #6366f1;
-    --color-accent-dim: rgba(99, 102, 241, 0.15);
-    --color-on-accent: #ffffff;
+    --color-accent: oklch(58% 0.18 275); /* #6366f1 approx */
+    --color-accent-dim: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    --color-on-accent: oklch(100% 0 0); /* #ffffff */
 
-    --color-error: #f87171;
-    --color-success: #34d399;
-    --color-on-primary: #020617;
-    --color-border: #334155;
+    --color-error: oklch(70% 0.15 25); /* #f87171 approx */
+    --color-success: oklch(80% 0.12 160); /* #34d399 approx */
+    --color-on-primary: oklch(13% 0.02 250); /* #020617 */
+    --color-border: oklch(35% 0.03 250); /* #334155 */
   }
+}
+
+:root.dark {
+  --color-bg: oklch(13% 0.02 250); /* #020617 */
+  --color-surface: oklch(21% 0.02 250); /* #0f172a */
+  --color-surface-dim: oklch(27% 0.02 250); /* #1e293b */
+  --color-surface-card: oklch(21% 0.02 250); /* #0f172a */
+
+  --color-primary: oklch(98.5% 0.005 250); /* #f8fafc */
+  --color-primary-light: oklch(86% 0.01 250); /* #cbd5e1 */
+  --color-secondary: oklch(68% 0.02 250); /* #94a3b8 */
+  
+  --color-accent: oklch(58% 0.18 275); /* #6366f1 approx */
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-on-accent: oklch(100% 0 0); /* #ffffff */
+
+  --color-error: oklch(70% 0.15 25); /* #f87171 approx */
+  --color-success: oklch(80% 0.12 160); /* #34d399 approx */
+  --color-on-primary: oklch(13% 0.02 250); /* #020617 */
+  --color-border: oklch(35% 0.03 250); /* #334155 */
 }
 
 /* ── Global Reset for Mobile Performance ── */

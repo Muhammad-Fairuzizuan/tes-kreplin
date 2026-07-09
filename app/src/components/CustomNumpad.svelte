@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { submitAnswer } from '../stores/gameStore.js';
-  import { settings } from '../stores/settingsStore.js';
+  import { submitAnswer } from '../stores/gameStore.ts';
+  import { settings } from '../stores/settingsStore.ts';
 
   $: keys = $settings.keyboardLayout === '123' ? [
     [1, 2, 3],

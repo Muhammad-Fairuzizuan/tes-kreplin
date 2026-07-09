@@ -38,19 +38,20 @@ export const screen = writable('START'); // 'START' | 'COUNTDOWN' | 'PLAYING' | 
 export const playerName = writable('');
 
 // Current game data
-export const currentRowIndex = writable(0);
-/** @type {import('svelte/store').Writable<{top: number, bottom: number}[]>} */
-export const gameDigits = writable([]);
+// Current game data
+export const currentRowIndex = writable<number>(0);
+export const gameDigits = writable<{top: number, bottom: number}[]>([]);
 
 // Timer
 export const timeLeft = writable(0);
 
 // Global live score
-export const currentCorrect = writable(0);
-export const currentWrong = writable(0);
+// Global live score
+export const currentCorrect = writable<number>(0);
+export const currentWrong = writable<number>(0);
 
 // Last answer feedback: null | 'correct' | 'wrong'
-export const lastFeedback = writable(null);
+export const lastFeedback = writable<'correct' | 'wrong' | null>(null);
 
 // Countdown value
 export const countdownValue = writable(3);
@@ -82,7 +83,8 @@ export const timeProgress = derived(
 );
 
 // ── Timer Logic ──
-let timerInterval = null;
+// ── Timer Logic ──
+let timerInterval: ReturnType<typeof setInterval> | null = null;
 
 function clearTimer() {
   if (timerInterval) {
@@ -106,7 +108,8 @@ function startTimer() {
 }
 
 // ── Answer Evaluation ──
-export function submitAnswer(digit) {
+// ── Answer Evaluation ──
+export function submitAnswer(digit: number) {
   const pair = get(currentPair);
   if (!pair) return;
   
@@ -186,7 +189,7 @@ function endGame() {
       questionType: get(settings).questionType,
     };
     
-    const history = JSON.parse(localStorage.getItem('kraepelin_history') || '[]');
+    const history: any[] = JSON.parse(localStorage.getItem('kraepelin_history') || '[]');
     history.push(record);
     localStorage.setItem('kraepelin_history', JSON.stringify(history));
   } catch (e) {

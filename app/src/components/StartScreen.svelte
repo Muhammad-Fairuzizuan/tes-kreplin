@@ -1,6 +1,6 @@
-<script>
-  import { playerName, startCountdown, screen } from "../stores/gameStore.js";
-  import { settings } from "../stores/settingsStore.js";
+<script lang="ts">
+  import { playerName, startCountdown, screen } from "../stores/gameStore.ts";
+  import { settings } from "../stores/settingsStore.ts";
   import SettingsScreen from "./SettingsScreen.svelte";
   import HistoryScreen from "./HistoryScreen.svelte";
 

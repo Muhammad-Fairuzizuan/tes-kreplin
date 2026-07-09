@@ -1,6 +1,15 @@
 import { writable } from 'svelte/store';
 
-const defaultSettings = {
+export interface Settings {
+  duration: number;
+  operation: 'Penjumlahan' | 'Pengurangan';
+  questionType: 'Berurut' | 'Acak';
+  format: 'Horizontal' | 'Vertikal';
+  keyboardLayout: '123' | '789';
+  theme: 'Terang' | 'Gelap';
+}
+
+const defaultSettings: Settings = {
   duration: 5, // Total time in minutes
   operation: 'Penjumlahan', // 'Penjumlahan' | 'Pengurangan'
   questionType: 'Acak', // 'Berurut' | 'Acak'
@@ -10,7 +19,7 @@ const defaultSettings = {
 };
 
 // Try to load from localStorage
-let initialSettings = { ...defaultSettings };
+let initialSettings: Settings = { ...defaultSettings };
 
 if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   initialSettings.theme = 'Gelap';
@@ -25,7 +34,7 @@ try {
   // Silent fail
 }
 
-export const settings = writable(initialSettings);
+export const settings = writable<Settings>(initialSettings);
 
 // Auto-save on change
 settings.subscribe(val => {
